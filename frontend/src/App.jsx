@@ -36,6 +36,10 @@ function App() {
           <Route path="/events/:id" element={<EventDetails />} />
           <Route path="/login" element={<Login />} />
         </Routes>
+
+        <footer className="footer">
+          <p>&copy; {new Date().getFullYear()} Sort My Scene. All rights reserved.</p>
+        </footer>
       </div>
     </Router>
   );
