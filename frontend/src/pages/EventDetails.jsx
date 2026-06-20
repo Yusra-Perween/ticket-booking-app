@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
-import { Timer, CheckCircle, AlertCircle } from 'lucide-react';
+import { Timer, CheckCircle, AlertCircle, MapPin, Calendar } from 'lucide-react';
 
 export default function EventDetails() {
   const { id } = useParams();
@@ -135,7 +135,13 @@ export default function EventDetails() {
     <div>
       <div style={{ marginBottom: '2rem' }}>
         <h1 style={{ marginBottom: '0.5rem' }}>{event.name}</h1>
-        <p>{event.venue} • {new Date(event.date).toLocaleDateString()}</p>
+        <p style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem', color: 'var(--text-muted)' }}>
+          <MapPin size={18} /> {event.venue} • <Calendar size={18} /> {new Date(event.date).toLocaleDateString()}
+        </p>
+        <div style={{ background: 'var(--bg-card)', padding: '1.5rem', borderRadius: 'var(--border-radius)', marginTop: '1rem', border: '1px solid rgba(255,255,255,0.05)' }}>
+          <h3 style={{ marginBottom: '0.5rem', fontSize: '1.2rem' }}>About this Event</h3>
+          <p>Join us for an unforgettable experience at {event.venue}. Get ready to be amazed and enjoy a fantastic evening of entertainment. Book your seats early as they are filling up fast!</p>
+        </div>
       </div>
 
       {error && (
